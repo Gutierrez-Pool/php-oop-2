@@ -8,8 +8,9 @@ class Categoria {
         $this->nome = $nome;
         $this->icono = $icono;
     }
-    // public function get() {
-    
+    public function getCategoria() {
+        return $this->icono;
+    }
 }
 
 ?>

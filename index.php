@@ -2,6 +2,8 @@
 
 require './Models/Prodotto.php';
 require './Models/Categoria.php';
+require './Models/Ospite.php';
+require './Models/Iscritto.php';
 
 $cani = new Categoria('cani','fa-solid fa-dog');
 $gatti = new Categoria('gatti','fa-solid fa-cat');
@@ -10,12 +12,19 @@ $prodotto1 = new Prodotto('Palla','$10.00','https://picsum.photos/300/200', $can
 $prodotto2 = new Prodotto('Cibo','$15.00','https://picsum.photos/300/200', $gatti);
 $prodotto3 = new Prodotto('Cuccia','$30.00', 'https://picsum.photos/300/200', $cani);
 
-
 $prodotti = [
     $prodotto1,
     $prodotto2,
     $prodotto3,
-]
+];
+
+$ospite = new Ospite('Mario Rossi','mrossi@mail.com');
+
+$iscritto = new Iscritto('MBianchi','Mario Bianchi','mbianchi@mail.com');
+$iscritto->setPassword("12345678");
+
+var_dump( $ospite );
+var_dump( $iscritto );
 
 ?>  
 

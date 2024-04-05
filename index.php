@@ -15,11 +15,15 @@ $cani = new Categoria('cani','fa-solid fa-dog');
 $gatti = new Categoria('gatti','fa-solid fa-cat');
 
 // Prodotti
-$palla = new Giocatolo('Palla','$10.00','https://picsum.photos/300/200', $cani, 'Gomma');
+$palla = new Giocatolo('Palla','$10.00','https://picsum.photos/300/200', $cani);
+$palla->setMaterial("Gomma");
 // var_dump($palla);
+
 $crocchette = new Cibo('Crocchette','$15.00','https://picsum.photos/300/200', $gatti, 'Pesce');
 // var_dump($crocchette);
+
 $cuccia = new Cuccia('Cuccia','$30.00', 'https://picsum.photos/300/200', $cani, 'Medium');
+$cuccia->setMaterial('Stoffa');
 // var_dump($cuccia);
 
 $prodotti = [
@@ -105,7 +109,7 @@ $iscritto->setPassword("12345678");
 
                                 } else if($prodotto instanceof Giocatolo) {
 
-                                    echo '<div>Materiale: ' . $prodotto->materiale . '</div>' ;
+                                    echo '<div>Materiale: ' . $prodotto->getMaterial() . '</div>' ;
 
                                 } else if($prodotto instanceof Cuccia) { 
 

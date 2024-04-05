@@ -2,7 +2,11 @@
 
 require_once __DIR__ . "/Prodotto.php";
 
+require_once __DIR__ . "/Traits/HasDimension.php";
+
 class Cibo extends Prodotto {
+
+    use HasDimension;
     public $ingredientePrincipale;
 
     /**

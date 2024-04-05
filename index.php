@@ -20,10 +20,12 @@ $palla->setMaterial("Gomma");
 // var_dump($palla);
 
 $crocchette = new Cibo('Crocchette','$15.00','https://picsum.photos/300/200', $gatti, 'Pesce');
+$crocchette->setDimension('0.5');
 // var_dump($crocchette);
 
-$cuccia = new Cuccia('Cuccia','$30.00', 'https://picsum.photos/300/200', $cani, 'Medium');
+$cuccia = new Cuccia('Cuccia','$30.00', 'https://picsum.photos/300/200', $cani);
 $cuccia->setMaterial('Stoffa');
+$cuccia->setDimension('Medium');
 // var_dump($cuccia);
 
 $prodotti = [
@@ -113,7 +115,7 @@ $iscritto->setPassword("12345678");
 
                                 } else if($prodotto instanceof Cuccia) { 
 
-                                    echo '<div>Taglia: '. $prodotto->misura . '</div>';
+                                    echo '<div>Taglia: '. $prodotto->getDimension() . '</div>';
 
                                 }
 

@@ -1,16 +1,21 @@
 <?php
+require_once __DIR__ . "/Prodotto.php";
 
 require_once __DIR__ . "/Traits/HasMaterial.php";
-// require_once __DIR__ . "/Prodotto.php";
+
+require_once __DIR__ . "/Traits/HasDimension.php";
+
 
 class Cuccia extends Prodotto {
 
-    use HasMaterial;
-    public $misura;
+    use HasDimension;
 
-    function __construct($nome, $prezzo, $immagine, Categoria $categoria, $misura) {
+    use HasMaterial;
+    // public $misura;
+
+    function __construct($nome, $prezzo, $immagine, Categoria $categoria) {
         parent::__construct($nome, $prezzo, $immagine, $categoria);
-        $this->misura = $misura;
+        // $this->misura = $misura;
 
         $this->tipo = "Cuccia";
     }

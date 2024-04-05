@@ -1,21 +1,31 @@
 <?php 
 
-require './Models/Prodotto.php';
-require './Models/Categoria.php';
-require './Models/Ospite.php';
-require './Models/Iscritto.php';
+require_once './Models/Categoria.php';
+require_once './Models/Prodotto.php';
+require_once './Models/Giocatolo.php';
+require_once './Models/Cibo.php';
+require_once './Models/Cuccia.php';
 
+require_once './Models/Ospite.php';
+require_once './Models/Iscritto.php';
+
+
+// Categorie
 $cani = new Categoria('cani','fa-solid fa-dog');
 $gatti = new Categoria('gatti','fa-solid fa-cat');
 
-$prodotto1 = new Prodotto('Palla','$10.00','https://picsum.photos/300/200', $cani);
-$prodotto2 = new Prodotto('Cibo','$15.00','https://picsum.photos/300/200', $gatti);
-$prodotto3 = new Prodotto('Cuccia','$30.00', 'https://picsum.photos/300/200', $cani);
+// Prodotti
+$palla = new Giocatolo('Palla','$10.00','https://picsum.photos/300/200', $cani, 'Gomma');
+// var_dump($palla);
+$crocchette = new Cibo('Crocchette','$15.00','https://picsum.photos/300/200', $gatti, 'Pesce');
+// var_dump($crocchette);
+$cuccia = new Cuccia('Cuccia','$30.00', 'https://picsum.photos/300/200', $cani, 'Medium');
+// var_dump($cuccia);
 
 $prodotti = [
-    $prodotto1,
-    $prodotto2,
-    $prodotto3,
+    $palla,
+    $crocchette,
+    $cuccia,
 ];
 
 $ospite = new Ospite('Mario Rossi','mrossi@mail.com');
@@ -23,8 +33,8 @@ $ospite = new Ospite('Mario Rossi','mrossi@mail.com');
 $iscritto = new Iscritto('MBianchi','Mario Bianchi','mbianchi@mail.com');
 $iscritto->setPassword("12345678");
 
-var_dump( $ospite );
-var_dump( $iscritto );
+// var_dump( $ospite );
+// var_dump( $iscritto );
 
 ?>  
 
@@ -75,13 +85,38 @@ var_dump( $iscritto );
                             <img src="<?= $prodotto->immagine ?>" class="card-img-top" alt="...">
                             <i class="<?= $prodotto->categoria->getCategoria() ?>"></i>
                         </div>
-                        <div class="card-body d-flex justify-content-between align-items-center">
-                            <h4>
-                                <?= $prodotto->nome ?>
-                            </h4>
-                            <div>
-                                <?= $prodotto->prezzo ?>
+                        <div class="card-body d-flex flex-column gap-2 ">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4>
+                                    <?= $prodotto->nome ?>
+                                </h4>
+                                <div>
+                                    <?= $prodotto->prezzo ?>
+                                </div>
                             </div>
+
+                            <div class="details">
+                            <div>
+                                <?php
+
+                                // controlliamo di che tipo sia il prodotto
+                                if($prodotto instanceof Cibo) {
+                                    echo '<div>Ingrediente principale: ' . $prodotto->ingredientePrincipale . '</div>' ;
+
+                                } else if($prodotto instanceof Giocatolo) {
+
+                                    echo '<div>Materiale: ' . $prodotto->materiale . '</div>' ;
+
+                                } else if($prodotto instanceof Cuccia) { 
+
+                                    echo '<div>Taglia: '. $prodotto->misura . '</div>';
+
+                                }
+
+                                
+                                ?>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ ."/Ospite.php";
 class Iscritto extends Ospite {
 
     protected $username;
